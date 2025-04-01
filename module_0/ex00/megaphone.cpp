@@ -1,8 +1,8 @@
-#include <iostream.h>
+#include <iostream>
 
-int	main(int ac, char **av)
+int	main()
 {
 
-	cout << endl;
+	std::cout << std::endl;
 	return (0);
 }
