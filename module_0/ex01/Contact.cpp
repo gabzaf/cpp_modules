@@ -25,6 +25,12 @@ void	Contact::set_f_n()
 			std::cout << std::endl << "Exit" << std::endl;
 			std::exit(0);
 		}
+		if (!input.empty())
+		{
+			this->first_name = input;
+			break ;
+		}
+		std::cout << "Enter a name: " << std::endl;
 	}
 }
 
