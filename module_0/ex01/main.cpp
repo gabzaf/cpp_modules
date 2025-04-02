@@ -4,14 +4,14 @@
 
 bool	input_handler(std::string input, PhoneBook *phonebook)
 {
-	if (input == "ADD" || input == "1")
+	if (input == "ADD" || input == "add" || input == "1")
 		phonebook->add();
-	else if (input == "SEARCH" || input == "2")
+	else if (input == "SEARCH" || input == "search" || input == "2")
 		phonebook->search();
-	else if (input == "EXIT" || input == "3")
+	else if (input == "EXIT" || input == "exit" || input == "3")
 		return false;
 	else
-		std::cout  << std::endl << " INVALID! \n\n" << std::endl;
+		std::cout  << std::endl << " INVALID! " << std::endl << std::endl;
 	return true;
 }
 
@@ -27,7 +27,7 @@ int	main()
 		std::getline(std::cin, input);
 		if (std::cin.eof())
 		{
-			std::cout << "Exit!" << std::endl;
+			std::cout << std::endl << "SIG Received - Exit!" << std::endl;
 			std::exit(0);
 		}
 		if (!input_handler(input, &phonebook))

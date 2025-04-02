@@ -29,8 +29,9 @@ void	PhoneBook::add()
 		contacts[tt_ctts_obj].set_p_n();
 		contacts[tt_ctts_obj].set_d_s();
 		std::cout << std::endl;
-		std::cout << "Contact added!" << std::endl;
-		std::cout << "----------" << std::endl << std::endl;
+		std::cout << "-------------------" << std::endl;
+		std::cout << " Contact added!" << std::endl;
+		std::cout << "-------------------" << std::endl << std::endl;
 		tt_ctts_obj += 1;
 		return ;
 	}
