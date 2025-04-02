@@ -4,7 +4,7 @@ RM := rm -rf
 
 NAME := phonebook
 
-SRCS := main.cpp Contact.cpp
+SRCS := main.cpp Contact.cpp PhoneBook.cpp PhoneBookUtils.cpp
 OBJS := $(SRCS:.cpp=.o)
 
 all: $(NAME)

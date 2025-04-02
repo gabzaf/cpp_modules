@@ -3,19 +3,23 @@
 #define PHONEBOOK_HPP
 
 #include "Contact.hpp"
-
+#include <iomanip>
 
 class PhoneBook
 {
 	private:
 		Contact contacts[8];
-		
+		int	tt_ctts_obj;
+		int	oldest_contact;
+
 	public:
 		PhoneBook();
 		~PhoneBook();
-		void add();
-		void search();
+		void	add();
+		void	search();
+		void	contacts_printer();
 };
 
+std::string truncate(std::string str);
 
 #endif
