@@ -35,8 +35,19 @@ void	PhoneBook::add()
 		tt_ctts_obj += 1;
 		return ;
 	}
-
-
+	std::cout << "Contact " << contacts[oldest_contact].get_f_n() << " deleted!" << std::endl << std::endl;
+	contacts[oldest_contact].set_f_n();
+	contacts[oldest_contact].set_l_n();
+	contacts[oldest_contact].set_nn();	
+	contacts[oldest_contact].set_p_n();
+	contacts[oldest_contact].set_d_s();
+	std::cout << "-------------------" << std::endl;
+	std::cout << " Contact added!" << std::endl;
+	std::cout << "-------------------" << std::endl << std::endl;
+	if (oldest_contact < 6)
+		oldest_contact += 1;
+	else
+		oldest_contact = 0;
 }
 
 void	PhoneBook::contacts_printer()
@@ -65,6 +76,7 @@ void	PhoneBook::search()
 		return ;
 	}
 	contacts_printer();
+	std::cout << std::endl;
 	if (std::cin.eof())
 	{
 		std::cout << std::endl << "Exit!" << std::endl;
