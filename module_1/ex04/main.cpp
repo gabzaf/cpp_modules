@@ -43,6 +43,33 @@ int	checkInputs(const std::string input_file, const std::string s1, const std::s
 	return (0);
 }	
 
+void	ft_replace(const std::string &filename, const std::string &s1, const std::string &s2)
+{
+	std::string	output_filename = filename + ".replace";
+	std::ofstream	output(output_filename.c_str());
+	if (!output.is_open())
+	{
+		errMsg("Err: Output file creation error.");
+		return ;
+	}
+	std::ifstream	input_file(filename.c_str());
+	std::string	line;
+	while (std::getline(input_file, line))
+	{
+		size_t	locale = line.find(s1);
+		while (locale != std::string::npos)
+		{
+			line.erase(locale, s1.length());
+			line.insert(locale, s2);
+			locale += s2.length();
+			locale = line.find(s1, locale);
+		}
+		output << line << std::endl;
+	}
+	input_file.close();
+	output.close();
+}
+
 int	main(int ac, char **av)
 {
 	if (ac == 4)
@@ -52,6 +79,7 @@ int	main(int ac, char **av)
 		std::string s2 = av[3];
 		if (checkInputs(input_file, s1, s2))
 			return (1);
+		ft_replace(input_file, s1, s2);
 	}
 	else
 	{
