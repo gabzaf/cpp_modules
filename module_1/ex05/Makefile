@@ -4,7 +4,7 @@ RM := rm -rf
 
 NAME := ex05
 
-SRCS := main.cpp
+SRCS := main.cpp Harl.cpp
 
 OBJS := $(SRCS:.cpp=.o)
 

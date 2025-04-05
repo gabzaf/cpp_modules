@@ -3,6 +3,7 @@
 #define HARL_HPP
 
 #include <iostream>
+#include <string>
 
 class Harl
 {
@@ -12,8 +13,8 @@ class Harl
 		void	warning(void);
 		void	error(void);
 	public:
-		Harl(void);
-		~Harl(void);
+		Harl();
+		~Harl();
 		void	complain(std::string level);
 };
 
