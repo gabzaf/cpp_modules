@@ -56,7 +56,7 @@ void	ft_replace(const std::string &filename, const std::string &s1, const std::s
 	std::string	line;
 	while (std::getline(input_file, line))
 	{
-		size_t	locale = line.find(s1);
+		size_t	locale = line.find(s1, 0);
 		while (locale != std::string::npos)
 		{
 			line.erase(locale, s1.length());
