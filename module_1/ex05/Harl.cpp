@@ -7,7 +7,7 @@ Harl::~Harl() {}
 
 void	Harl::debug(void)
 {
-	std::cout <<"I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!" << std::endl;
+	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!" << std::endl;
 }
 
 void	Harl::info(void)
@@ -34,8 +34,9 @@ void	Harl::complain(std::string level)
 	void (Harl::*members_ptrs[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	while (i < 4)
 	{
-		if (level == levels[i])
+		if (levels[i] == level)
 			return (this->*members_ptrs[i])();
+		i++;
 	}
-	i++;
+	std::cout << "Invalid command!" << std::endl;
 }
