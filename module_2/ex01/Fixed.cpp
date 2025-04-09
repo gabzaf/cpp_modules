@@ -46,12 +46,12 @@ void	Fixed::setRawBits(int const raw)
 	this->rawBits = raw;
 }
 
-int Fixed::toInt(void)const
+int	Fixed::toInt(void)const
 {
     return (rawBits >> Fixed::fractionalBits);
 }
 
-float Fixed::toFloat() const
+float	Fixed::toFloat() const
 {
     return ((float)this->rawBits / (float)(1 << Fixed::fractionalBits));
 
