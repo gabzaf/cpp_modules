@@ -11,137 +11,73 @@ Contact::Contact()
 
 Contact::~Contact(){}
 
-void	Contact::set_f_n()
+static std::string	get_clean_input(const std::string &prompt)
 {
 	std::string	input = "";
 
 	while (1)
 	{
-		std::cout << "First name: ";
+		std::cout << prompt;
 		std::getline(std::cin, input);
 		if (std::cin.eof())
 		{
 			std::cout << std::endl << "Exit" << std::endl;
 			std::exit(0);
 		}
-		if (!input.empty())
+		if (input.empty())
 		{
-			this->first_name = input;
-			break ;
+			std::cout << "Input cannot be empty." << std::endl;
+			continue;
 		}
-		std::cout << "Enter a name: " << std::endl;
+		if (input.find('\t') != std::string::npos)
+		{
+			continue;
+		}
+		return (input);
 	}
 }
 
-void	Contact::set_l_n()
+static bool	isPhonenumberValid(const std::string &pn)
 {
-	std::string	input = "";
-
-	while (1)
+	size_t	startIndex = 0;
+	if (!pn.empty() && pn[0] == '+')
+		startIndex = 1;
+	for (size_t i = startIndex; i < pn.length(); i++)
 	{
-		std::cout << "Last name: ";
-		std::getline(std::cin, input);
-		if (std::cin.eof())
-		{
-			std::cout << std::endl << "Exit" << std::endl;
-			std::exit(0);
-		}
-		if (!input.empty())
-		{
-			this->last_name = input;
-			break ;
-		}
-		std::cout << "Enter a last name: " << std::endl;
+		if (!std::isdigit(pn[i]))
+			return (false);
 	}
+	return (true);
 }
 
-void	Contact::set_nn()
-{
-	std::string	input = "";
+void	Contact::set_f_n() { this->first_name = get_clean_input("First name: "); }
 
-	while (1)
-	{
-		std::cout << "Nickname: ";
-		std::getline(std::cin, input);
-		if (std::cin.eof())
-		{
-			std::cout << std::endl << "Exit" << std::endl;
-			std::exit(0);
-		}
-		if (!input.empty())
-		{
-			this->nickname = input;
-			break ;
-		}
-		std::cout << "Enter a nickname: " << std::endl;
-	}
-}
+void	Contact::set_l_n() { this->last_name = get_clean_input("Last name: "); }
+
+void	Contact::set_nn() { this->nickname = get_clean_input("Nickname: "); }
 
 void	Contact::set_p_n()
 {
-	std::string	input = "";
+	std::string	input;
 
 	while (1)
 	{
-		std::cout << "Phone number: ";
-		std::getline(std::cin, input);
-		if (std::cin.eof())
-		{
-			std::cout << std::endl << "Exit" << std::endl;
-			std::exit(0);
-		}
-		if (!input.empty())
-		{
-			this->phone_number = input;
-			break ;
-		}
-		std::cout << "Enter a phone number: " << std::endl;
+		input = get_clean_input("Phone number: ");
+		if (!isPhonenumberValid(input))
+			continue;
+		this->phone_number = input;
+		break;
 	}
 }
 
-void	Contact::set_d_s()
-{
-	std::string	input = "";
+void	Contact::set_d_s() { this->dark_secret = get_clean_input("Dark secret: "); }
 
-	while (1)
-	{
-		std::cout << "Dark Secret: ";
-		std::getline(std::cin, input);
-		if (std::cin.eof())
-		{
-			std::cout << std::endl << "Exit" << std::endl;
-			std::exit(0);
-		}
-		if (!input.empty())
-		{
-			this->dark_secret = input;
-			break ;
-		}
-		std::cout << "Enter a nickname: " << std::endl;
-	}
-}
+std::string	Contact::get_f_n() { return (this->first_name); }
 
-std::string	Contact::get_f_n()
-{
-	return (this->first_name);
-}
+std::string	Contact::get_l_n() { return (this->last_name); }
 
-std::string	Contact::get_l_n()
-{
-	return (this->last_name);
-}
+std::string	Contact::get_nn() { return (this->nickname); }
 
-std::string	Contact::get_nn()
-{
-	return (this->nickname);
-}
+std::string	Contact::get_p_n() { return (this->phone_number); }
 
-std::string	Contact::get_p_n()
-{
-	return (this->phone_number);
-}
-
-std::string	Contact::get_d_s()
-{
-	return (this->dark_secret);
-}
+std::string	Contact::get_d_s() { return (this->dark_secret); }

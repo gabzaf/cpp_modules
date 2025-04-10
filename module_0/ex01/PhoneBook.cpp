@@ -68,6 +68,56 @@ void	PhoneBook::contacts_printer()
 	}
 }
 
+void	PhoneBook::display_index()
+{
+	int		i;
+	size_t		j;
+	std::string	str;	
+	bool		is_nbr_valid;
+
+	while (1)
+	{
+		std::cout << std::endl << "Enter the index to display the Contact Information" << std::endl;
+		std::getline(std::cin, str);
+		if (std::cin.eof())
+		{
+			std::cout << std::endl << "Exit!" << std::endl;
+			std::exit(0);
+		}
+		is_nbr_valid = true;
+		j = 0;
+		if (str.empty())
+			is_nbr_valid = false;
+		while (j < (str.length()))
+		{
+			if (!isdigit(str[j]))
+			{
+				is_nbr_valid = false;
+				break;
+			}
+			j++;
+		}
+		if (!is_nbr_valid)
+			continue;
+		i = std::atoi(str.c_str());
+		if (i < 1 || i > tt_ctts_obj)
+			continue;
+		i -= 1;
+		std::cout << std::endl;
+		std::cout << "------------------------------" << std::endl;
+		std::cout << "  Contact for selected index  " << std::endl;
+		std::cout << "------------------------------" << std::endl;
+	
+		std::cout << "First Name: " << this->contacts[i].get_f_n() << std::endl;
+		std::cout << "Last Name: " << this->contacts[i].get_l_n() << std::endl;
+		std::cout << "Nickame: " << this->contacts[i].get_nn() << std::endl;
+		std::cout << "Phone number: " << this->contacts[i].get_p_n() << std::endl;
+		std::cout << "Dark Secret: " << this->contacts[i].get_d_s() << std::endl;
+		std::cout << std::endl;
+		break;
+	}
+}
+
 void	PhoneBook::search()
 {
 	if (tt_ctts_obj == 0)
@@ -82,4 +132,5 @@ void	PhoneBook::search()
 		std::cout << std::endl << "Exit!" << std::endl;
 		std::exit(0);
 	}
+	display_index();
 }

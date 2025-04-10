@@ -18,6 +18,7 @@ class PhoneBook
 		void	add();
 		void	search();
 		void	contacts_printer();
+		void	display_index();
 };
 
 std::string truncate(std::string str);
