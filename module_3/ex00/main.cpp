@@ -30,13 +30,11 @@ int	main()
 	d = b;
 
 	std::cout << std::endl << "------------------------------------------" << std::endl;
-	std::cout << std::endl;
-
-	ClapTrap e("Vini");
-	ClapTrap f(e);
 	
-	std::cout << std::endl << "------------------------------------------" << std::endl;
-	std::cout << std::endl;
+	ClapTrap e("Vini");
+	d.attack("Vini");
+	e.takeDamage(-7);
+	e.beRepaired(-2);
 
-
+	return (0);
 }
