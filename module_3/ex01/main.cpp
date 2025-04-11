@@ -1,40 +1,24 @@
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int	main()
 {
-	ClapTrap a("Neymar");
-	ClapTrap b("Messi");
-	
-	a.attack("Messi");
-	b.takeDamage(3);
-	b.beRepaired(2);
+	std::cout << "---- DEFAULT CONSTRUCTOR ----" << std::endl;
+	ScavTrap a;
+	std::cout << std::endl << "---- ASSIGNMENT CONSTRUCTOR ----" << std::endl;
+	ScavTrap m("Menino");
+	std::cout << std::endl << "---- COPY CONSTRUCTOR ----" << std::endl;
+	ScavTrap s(m);
+	std::cout << std::endl << "---- ATTACK AND TAKE DAMAGE METHODS ----" << std::endl;
+	ScavTrap b("Ney");
+	ScavTrap j("Jorge");
+	b.attack("Jorge");
+	j.takeDamage(10);
+	j.beRepaired(3);
+	j.guardGate();
 
-	b.attack("Neymar");
-	a.takeDamage(6);
-	a.beRepaired(8);
 
-	a.attack("Messi");
-	b.takeDamage(6);
-	b.beRepaired(2);
-	a.attack("Messi");
-	b.takeDamage(5);
-
-	std::cout << std::endl << "------------------------------------------" << std::endl;
-	std::cout << std::endl;
-
-	ClapTrap c = a;
-	c.attack("Ronaldo");
-
-	ClapTrap d;
-	d = b;
-
-	std::cout << std::endl << "------------------------------------------" << std::endl;
-	
-	ClapTrap e("Vini");
-	d.attack("Vini");
-	e.takeDamage(-7);
-	e.beRepaired(-2);
 
 	return (0);
 }

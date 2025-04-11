@@ -2,22 +2,27 @@
 
 ClapTrap::ClapTrap() : _name(""), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
-	std::cout << "Default constructor called" << std::endl << std::endl;
+	std::cout << "ClapTrap default constructor called" << std::endl << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string &name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
-	std::cout << "Args constructor called" << std::endl;
+	std::cout << "ClapTrap args constructor called" << std::endl;
+}
+
+ClapTrap::ClapTrap(const std::string &name, int hitPoints, int energyPoints, int attackDamage) : _name(name), _hitPoints(hitPoints), _energyPoints(energyPoints), _attackDamage(attackDamage)
+{
+	std::cout << "ClapTrap inheritance constructor called " << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other) : _name(other._name), _hitPoints(other._hitPoints), _energyPoints(other._energyPoints), _attackDamage(other._attackDamage)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ClapTrap copy constructor called" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
-	std::cout << "Assignment operator overload called" << std::endl;
+	std::cout << "ClapTrap assignment operator overload called" << std::endl;
 	if (this != &other)
 	{
 		this->_name = other._name;
@@ -28,7 +33,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 	return (*this);
 }
 
-ClapTrap::~ClapTrap() {std::cout << "Destructor called" << std::endl;}
+ClapTrap::~ClapTrap() {std::cout << "ClapTrap destructor called" << std::endl;}
 
 void	ClapTrap::attack(const std::string &target)
 {
