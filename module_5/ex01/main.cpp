@@ -11,8 +11,6 @@ int	main()
 		Form b("B", 1, 1);
 
 		std::cout << ney << std::endl;
-		std::cout << a << std::endl;
-
 		ney.signForm(a);
 		std::cout << a << std::endl;
 

@@ -50,6 +50,6 @@ const char	*Form::GradeTooHighException::what() const throw() { return ("Grade's
 
 std::ostream	&operator<<(std::ostream &os, const Form &obj)
 {
-	os << "Form " << obj.getName() << " requires grade " << obj.getGradeSigned() << " to sign, grade " << obj.getGradeExec() << " to execute, signed: " << (obj.getIsSigned() ? "y" : "n");
+	os << "Form " << obj.getName() << " requires grade " << obj.getGradeSigned() << " to sign, grade " << obj.getGradeExec() << " to execute, signed: " << (obj.getIsSigned() ? "signed" : "not signed");
 	return (os);
 }

@@ -38,16 +38,20 @@ int	Bureaucrat::getGrade() const
 
 void	Bureaucrat::incrementGrade()
 {
+	std::cout << _name << " is incrementing his grade from " << _grade << std::endl;
 	if (_grade - 1 < 1)
          	throw GradeTooHighException();
 	this->_grade--;
+	std::cout << _name << " now has grade " << _grade << std::endl;
 }
 
 void	Bureaucrat::decrementGrade()
 {
+	std::cout << _name << " is decrementing his grade from " << _grade << std::endl;
 	if (_grade + 1 > 150)
         	throw GradeTooLowException();
 	this->_grade++;
+	std::cout << _name << " now has grade " << _grade << std::endl;
 }
 
 const char*	Bureaucrat::GradeTooHighException::what() const throw()
@@ -76,6 +80,8 @@ void		Bureaucrat::signForm(Form &form)
 	try
 	{
 		form.beSigned(*this);
+		std::cout << _name << " signed " << form.getName() << std::endl;
+		return ;
 	}
 	catch (Form::GradeTooLowException &e)
 	{
