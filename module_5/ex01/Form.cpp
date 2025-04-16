@@ -22,7 +22,7 @@ Form		&Form::operator=(const Form &other)
 {
 	std::cout << "Form assignment operator overload called" << std::endl;
 	if (this != &other)
-		return (*this);
+		this->_isSigned = other._isSigned;
 	return (*this);
 }
 
@@ -36,7 +36,7 @@ int		Form::getGradeExec() const { return (_gradeExec); }
 
 bool		Form::getIsSigned() const { return (_isSigned); }
 
-void		Form::beSigned(const Bureaucrat &obj)
+void		Form::beSigned(Bureaucrat &obj)
 {
 	if (obj.getGrade() > _gradeSigned)
 		throw GradeTooLowException();
