@@ -1,4 +1,3 @@
-
 #include "Form.hpp"
 
 Form::Form() : _name(), _isSigned(false), _gradeSigned(150), _gradeExec(150) { std::cout << "Form default constructor called" << std::endl; }
@@ -28,20 +27,20 @@ Form		&Form::operator=(const Form &other)
 
 Form::~Form() { std::cout << "Form destructor called" << std::endl; }
 
-std::string	Form::getName() const { return (_name); }
+std::string	Form::getName() const { return (this->_name); }
 
-int		Form::getGradeSigned() const { return (_gradeSigned); }
+int		Form::getGradeSigned() const { return (this->_gradeSigned); }
 
-int		Form::getGradeExec() const { return (_gradeExec); }
+int		Form::getGradeExec() const { return (this->_gradeExec); }
 
-bool		Form::getIsSigned() const { return (_isSigned); }
+bool		Form::getIsSigned() const { return (this->_isSigned); }
 
 void		Form::beSigned(Bureaucrat &obj)
 {
-	if (obj.getGrade() > _gradeSigned)
+	if (obj.getGrade() > (this->_gradeSigned))
 		throw GradeTooLowException();
 	else
-		_isSigned = true;
+		this->_isSigned = true;
 }
 
 const char	*Form::GradeTooLowException::what() const throw() { return ("Grade's too low!"); };
