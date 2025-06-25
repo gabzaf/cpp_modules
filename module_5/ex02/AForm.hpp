@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <string>
-#include <stdexcept>
 #include "Bureaucrat.hpp"
+
 
 class AForm
 {
@@ -16,18 +16,18 @@ class AForm
 	public:
 		AForm();
 		AForm(std::string name, int gradeSigned, int gradeExec);
-		AForm(const Form &other);
-		AForm &operator=(const Form &other);
+		AForm(const AForm &other);
+		AForm &operator=(const AForm &other);
 		virtual ~AForm();
 
 		std::string	getName() const;
 		bool		getIsSigned() const;
 		int		getGradeSigned() const;
 		int		getGradeExec() const;
-		void		beSigned(const Bureaucrat &obj);	
+		void		beSigned(Bureaucrat &obj);	
 	
-		virtual void	execute(Bureaucrat const &executor) = 0;
-		void		canExecute(Bureaucrat const &executor);
+		virtual void	execute(Bureaucrat const &executor) const = 0;
+
 
 	class GradeTooHighException : public std::exception
 	{
