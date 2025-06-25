@@ -4,7 +4,7 @@ RM := rm -rf
 
 NAME := ex02
 
-SRCS := main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
+SRCS := main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp
 
 OBJS := $(SRCS:.cpp=.o)
 
