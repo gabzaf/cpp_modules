@@ -15,18 +15,30 @@ int	main()
 
 		ShrubberyCreationForm shForm("taxes");
 		shForm.beSigned(ney);
-		PresidentialPardonForm presForm("Halaand");
-		RobotomyRequestForm robForm("Marta");
-
 		shForm.execute(ney);
 	}*/
 
-	{
+	/*{
 		Bureaucrat vini("Vini", 30);
 		RobotomyRequestForm robForm("Marta");
 		robForm.beSigned(vini);
 		robForm.execute(vini);
-	}
+	}*/
+
+	/*{
+		Bureaucrat messi("Messi", 4);
+		PresidentialPardonForm presForm("Halaand");
+		presForm.beSigned(messi);
+		presForm.execute(messi);
+	}*/
 	
+	{
+		Bureaucrat mbappe("Mbappe", 40);
+		PresidentialPardonForm presForm("Halaand");
+		presForm.beSigned(mbappe);
+		mbappe.executeForm(presForm);
+		
+	}
+
 	return (0);
 }

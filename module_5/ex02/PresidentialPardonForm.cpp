@@ -1,11 +1,11 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(): AForm("", 72, 45), _target("default")
+PresidentialPardonForm::PresidentialPardonForm(): AForm("", 25, 5), _target("default")
 { 
     //std::cout << "PresidentialPardonForm default constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("", 72, 45), _target(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("", 25, 5), _target(target)
 { 
     //std::cout << "PresidentialPardonForm parametrized constructor called" << std::endl;
 }
@@ -39,11 +39,5 @@ void PresidentialPardonForm::execute(Bureaucrat const &executor) const
 	if (executor.getGrade() > this->getGradeExec())
 		throw AForm::GradeTooLowException();
 
-	std::ofstream streamFile;
-	std::string fileName = _target + "_shrubbery";
-	streamFile.open(fileName.c_str(), std::ios_base::out);
-
-    //implement inform
-
-	streamFile.close();
+	std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }
