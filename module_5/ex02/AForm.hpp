@@ -45,6 +45,11 @@ class AForm
 		public:
 			const char *what() const throw();
 	};
+	class FileNotOpenedException : public std::exception
+	{
+		public:
+			const char *what() const throw();
+	};
 };
 
 std::ostream &operator<<(std::ostream &outputStream, const AForm &obj);

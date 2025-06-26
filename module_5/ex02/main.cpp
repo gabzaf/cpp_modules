@@ -8,12 +8,25 @@
 
 int	main()
 {
-	Bureaucrat ney;
+	/*{
+		Bureaucrat ney("Ney", 3);
+	
+		//ney.signForm();
 
-	ShrubberyCreationForm from1("taxes");
-	PresidentialPardonForm("Halaand");
-	RobotomyRequestForm("Marta");
+		ShrubberyCreationForm shForm("taxes");
+		shForm.beSigned(ney);
+		PresidentialPardonForm presForm("Halaand");
+		RobotomyRequestForm robForm("Marta");
 
+		shForm.execute(ney);
+	}*/
+
+	{
+		Bureaucrat vini("Vini", 30);
+		RobotomyRequestForm robForm("Marta");
+		robForm.beSigned(vini);
+		robForm.execute(vini);
+	}
 	
 	return (0);
 }

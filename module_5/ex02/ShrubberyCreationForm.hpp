@@ -4,7 +4,7 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include <fstream>
-#include <string.h>
+#include <string>
 
 class ShrubberyCreationForm : public AForm
 {
