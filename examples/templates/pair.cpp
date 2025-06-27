@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
 
-template <typename T1, typename T2>
-class Pair
+//Class templates like function templates, are useful when a class defines something that is
+//independent of the data type. It is useful for classes like LinkedList, BinaryTree, Stack, Queue, Array, etc.
+template <typename T1, typename T2> class Pair
 {
     public:
         T1 first;
