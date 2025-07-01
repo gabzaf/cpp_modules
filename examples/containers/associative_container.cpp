@@ -2,6 +2,8 @@
 #include <map>
 #include <set>
 
+//Associative containers store elements in a sorted order
+
 void    associative_container_set()
 {
     std::cout << "set" << std::endl;
@@ -25,7 +27,6 @@ void    associative_container_map()
     {
         std::cout << pair.first << ": " << pair.second << std::endl;
     }
-
 }
 
 int main()
