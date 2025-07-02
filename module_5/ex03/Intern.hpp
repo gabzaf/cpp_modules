@@ -7,10 +7,13 @@
 #include "ShrubberyCreationForm.hpp"
 #include <string>
 #include <iostream>
+#include <map>
 
 class Intern
 {
     private:
+        typedef AForm* (Intern::*FormCreationFunction)(std::string const &);
+        std::map<std::string, FormCreationFunction> _formTypes;
         
     public:
         Intern();
@@ -23,6 +26,12 @@ class Intern
         AForm *createPresidentialPardonForm(std::string const &target);
         AForm *createRobotomyRequestForm(std::string const &target);
 	    AForm *createShrubberyCreationForm(std::string const &target);
+
+        class FormNotFoundException : public std::exception
+        {
+            public:
+                    const char *what() const throw();
+        };
 };
 
 #endif

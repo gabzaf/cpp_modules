@@ -5,7 +5,7 @@ PresidentialPardonForm::PresidentialPardonForm(): AForm("", 25, 5), _target("def
     //std::cout << "PresidentialPardonForm default constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("", 25, 5), _target(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("presidential pardon form", 25, 5), _target(target)
 { 
     //std::cout << "PresidentialPardonForm parametrized constructor called" << std::endl;
 }

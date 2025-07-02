@@ -1,4 +1,3 @@
-
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
@@ -26,17 +25,17 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 
 Bureaucrat::~Bureaucrat() {}
 
-std::string	Bureaucrat::getName() const
+std::string		Bureaucrat::getName() const
 {
 	return (this->_name);
 }
 
-int	Bureaucrat::getGrade() const
+int				Bureaucrat::getGrade() const
 {
 	return (this->_grade);
 }
 
-void	Bureaucrat::incrementGrade()
+void			Bureaucrat::incrementGrade()
 {
 	std::cout << _name << " is incrementing his grade from " << _grade << std::endl;
 	if (_grade - 1 < 1)
@@ -45,7 +44,7 @@ void	Bureaucrat::incrementGrade()
 	std::cout << _name << " now has grade " << _grade << std::endl;
 }
 
-void	Bureaucrat::decrementGrade()
+void			Bureaucrat::decrementGrade()
 {
 	std::cout << _name << " is decrementing his grade from " << _grade << std::endl;
 	if (_grade + 1 > 150)
@@ -54,23 +53,23 @@ void	Bureaucrat::decrementGrade()
 	std::cout << _name << " now has grade " << _grade << std::endl;
 }
 
-const char*	Bureaucrat::GradeTooHighException::what() const throw()
+const char		*Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Grade is too high!");
 };
 
-const char*	Bureaucrat::GradeTooLowException::what() const throw()
+const char		*Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("Grade is too low!");
 };
 
-std::ostream&	operator<<(std::ostream& os, const Bureaucrat& obj)
+std::ostream	&operator<<(std::ostream& os, const Bureaucrat& obj)
 {
 	os << obj.getName() << ", bureaucrat grade " << obj.getGrade() << ".";
 	return (os);
 }
 
-void		Bureaucrat::signForm(Form &form)
+void			Bureaucrat::signForm(Form &form)
 {
 	if (form.getIsSigned() == true)
 	{

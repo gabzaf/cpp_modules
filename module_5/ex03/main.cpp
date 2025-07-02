@@ -1,56 +1,53 @@
-
-#include "Bureaucrat.hpp"
-#include "AForm.hpp"
 #include "Intern.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "AForm.hpp"
 #include <iostream>
 
-int	main()
+int main()
 {
-	/*{
-		Bureaucrat ney("Ney", 3);
-	
-		//ney.signForm();
-
-		ShrubberyCreationForm shForm("taxes");
-		shForm.beSigned(ney);
-		shForm.execute(ney);
-	}*/
-
-	/*{
-		Bureaucrat vini("Vini", 30);
-		RobotomyRequestForm robForm("Marta");
-		robForm.beSigned(vini);
-		robForm.execute(vini);
-	}*/
-
-	/*{
-		Bureaucrat messi("Messi", 4);
-		PresidentialPardonForm presForm("Halaand");
-		presForm.beSigned(messi);
-		presForm.execute(messi);
-	}*/
-	
-	/*{
-		Bureaucrat mbappe("Mbappe", 40);
-		PresidentialPardonForm presForm("Halaand");
-		presForm.beSigned(mbappe);
-		mbappe.executeForm(presForm);
-		
-	}*/
-
+	try
 	{
-		Intern someRandomIntern;
-		AForm* rrf;
-		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-		if (rrf)
-		{
-			std::cout << "Created form: " << rrf->getName() << std::endl;
-			delete rrf;
-		}
-	}
+    	Intern joao;
+    	AForm* form;
 
-	return (0);
+    	std::cout << std::endl << "--- Testing Valid Form Creation ---" << std::endl;
+
+    	form = joao.makeForm("shrubbery creation", "home");
+    	if (form)
+    	{
+    	    std::cout << "Successfully created form: " << form->getName() << std::endl;
+    	    delete form;
+    	}
+
+    	std::cout << "--------------------" << std::endl;
+
+    	form = joao.makeForm("robotomy request", "Bender");
+    	if (form)
+    	{
+    	    std::cout << "Successfully created form: " << form->getName() << std::endl;
+    	    delete form;
+    	}
+
+    	std::cout << "--------------------" << std::endl;
+
+    	form = joao.makeForm("presidential pardon", "Zaphod");
+    	if (form)
+    	{
+    	    std::cout << "Successfully created form: " << form->getName() << std::endl;
+    	    delete form;
+    	}
+
+		std::cout << "--------------------" << std::endl;
+		
+		form = joao.makeForm("King pardon", "Charles");
+    	if (form)
+    	{
+    	    std::cout << "Successfully created form: " << form->getName() << std::endl;
+    	    delete form;
+    	}
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
+    return (0);
 }

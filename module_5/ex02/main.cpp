@@ -8,37 +8,43 @@
 
 int	main()
 {
-	/*{
-		Bureaucrat ney("Ney", 3);
-	
-		//ney.signForm();
+	/*Bureaucrat				*b1 = NULL;
+	PresidentialPardonForm	*f1 = NULL;
 
-		ShrubberyCreationForm shForm("taxes");
+	try
+	{
+		b1 = new Bureaucrat("Jose", 150);
+		f1 = new PresidentialPardonForm();
+		b1->signForm(*f1);
+        b1->executeForm(*f1);
+	}
+	catch (const std::exception& e)
+    {
+		std::cerr << e.what() << '\n';
+	}
+	delete b1;
+	delete f1;*/
+	/*try
+	{
+		Bureaucrat ney("Ney", 145);
+		ShrubberyCreationForm shForm("home");
 		shForm.beSigned(ney);
 		shForm.execute(ney);
+	}
+	catch (const std::exception& e)
+    {
+		std::cerr << e.what() << '\n';
 	}*/
-
-	/*{
-		Bureaucrat vini("Vini", 30);
+	try
+	{
+		Bureaucrat vini("Vini", 150);
 		RobotomyRequestForm robForm("Marta");
 		robForm.beSigned(vini);
 		robForm.execute(vini);
-	}*/
-
-	/*{
-		Bureaucrat messi("Messi", 4);
-		PresidentialPardonForm presForm("Halaand");
-		presForm.beSigned(messi);
-		presForm.execute(messi);
-	}*/
-	
-	{
-		Bureaucrat mbappe("Mbappe", 40);
-		PresidentialPardonForm presForm("Halaand");
-		presForm.beSigned(mbappe);
-		mbappe.executeForm(presForm);
-		
 	}
-
+	catch (const std::exception& e)
+    {
+		std::cerr << e.what() << '\n';
+	}
 	return (0);
 }

@@ -84,5 +84,9 @@ int	main()
 	{
 		std::cout << "Exception caught - " << j.what() << std::endl;
 	}
+
+	Bureaucrat bob("Bob", 50);
+    Bureaucrat alice("Alice", 25);
+    std::cout << "Here are two bureaucrats: " << bob << " and " << alice << std::endl;
 	return (0);
 }

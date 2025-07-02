@@ -1,4 +1,3 @@
-
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : _name(""), _grade(150) {}
@@ -49,17 +48,17 @@ void	Bureaucrat::decrementGrade()
 	this->_grade++;
 }
 
-const char*	Bureaucrat::GradeTooHighException::what() const throw()
+const char	*Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Grade is too high!");
 };
 
-const char*	Bureaucrat::GradeTooLowException::what() const throw()
+const char	*Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("Grade is too low!");
 };
 
-std::ostream&	operator<<(std::ostream& os, const Bureaucrat& obj)
+std::ostream	&operator<<(std::ostream &os, const Bureaucrat &obj)
 {
 	os << obj.getName() << ", bureaucrat grade " << obj.getGrade() << ".";
 	return (os);
