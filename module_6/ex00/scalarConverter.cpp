@@ -51,33 +51,18 @@ void    charConversion(const std::string &input, int minus)
     }
 }
 
-void    intConversion(const std::string &input)
-{
-    (void)input;
-    std::cout << "intConversion";
-}
-
 bool    is_int(const std::string &input)
 {
-    size_t          i;
-    const size_t    len = input.length();
-    size_t          signCount = 0;
+    size_t  i;
 
-    for (i = 0; i < len && (input[i] == '+' || input[i] == '-'); ++i)
-        signCount++;
-    if (i == len && signCount > 0) 
-        return false;
-    while (input[signCount])
+    i = 0;
+    while (i < input.length())
     {
-        if (!(input[signCount] > '0' && input[signCount] < '9'))
-        {
-            signCount++;
-            continue;
-        }
-        if (signCount == len)
-            std::cout << "oa0";
+        if (!std::isdigit(input[i]))
+            return (false);
+        i++;
     }
-    return false;
+    return (true);
 }
 
 void     float_double_conversion(const std::string &input, int minus)
@@ -167,8 +152,8 @@ void    ScalarConverter::convert(const std::string &input)
             charConversion(processed_input, minus);
         else if (input.find('.')!= std::string::npos)
             is_float_or_double(processed_input, minus);
-        /*else if (is_int(input))
-            intConversion(input);*/
+        else if (is_int(input))
+            std::cout << "Melhorar print";
         else
             throw NotAcceptedFormatException();
     }
