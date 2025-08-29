@@ -32,6 +32,11 @@ PresidentialPardonForm::~PresidentialPardonForm()
     //std::cout << "PresidentialPardonForm destructor called" << std::endl;
 }
 
+std::string PresidentialPardonForm::getTarget() const
+{
+    return (this->_target);
+}
+
 void PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
     if (!this->getIsSigned())

@@ -4,7 +4,6 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include <fstream>
-#include <string>
 
 class ShrubberyCreationForm : public AForm
 {
@@ -17,6 +16,7 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
 		~ShrubberyCreationForm();
 
+		std::string getTarget() const;
 		void	execute(Bureaucrat const &executor) const;
 };
 

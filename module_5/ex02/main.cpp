@@ -24,9 +24,9 @@ int	main()
 	}
 	delete b1;
 	delete f1;*/
-	/*try
+	try
 	{
-		Bureaucrat ney("Ney", 145);
+		Bureaucrat ney("Ney", 150);
 		ShrubberyCreationForm shForm("home");
 		shForm.beSigned(ney);
 		shForm.execute(ney);
@@ -34,8 +34,8 @@ int	main()
 	catch (const std::exception& e)
     {
 		std::cerr << e.what() << '\n';
-	}*/
-	try
+	}
+	/*try
 	{
 		Bureaucrat vini("Vini", 150);
 		RobotomyRequestForm robForm("Marta");
@@ -45,6 +45,6 @@ int	main()
 	catch (const std::exception& e)
     {
 		std::cerr << e.what() << '\n';
-	}
+	}*/
 	return (0);
 }

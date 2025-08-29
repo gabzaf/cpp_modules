@@ -32,6 +32,11 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 	//std::cout << "ShrubberyCreationForm destructor called" << std::endl;
 }
 
+std::string ShrubberyCreationForm::getTarget() const
+{
+    return (this->_target);
+}
+
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	if (!this->getIsSigned())

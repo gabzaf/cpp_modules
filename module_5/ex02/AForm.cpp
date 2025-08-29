@@ -10,7 +10,7 @@ AForm::AForm(std::string name, int gradeSigned, int gradeExec) : _name(name), _g
 	this->_isSigned = false;
 	//std::cout << "Form args constructor called" << std::endl;
 	if (gradeSigned < 1 || gradeExec < 1)
-		throw GradeTooLowException();
+		throw GradeTooHighException();
 	if (gradeSigned > 150 || gradeExec > 150)
 		throw GradeTooLowException();
 }
@@ -26,6 +26,7 @@ AForm		&AForm::operator=(const AForm &other)
 	//std::cout << "Form assignment operator overload called" << std::endl;
 	if (this != &other)
 		return (*this);
+	_isSigned = other._isSigned;
 	return (*this);
 }
 

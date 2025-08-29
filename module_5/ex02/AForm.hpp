@@ -13,6 +13,7 @@ class AForm
 		bool				_isSigned;
 		const int			_gradeSigned;
 		const int			_gradeExec;
+		
 	public:
 		AForm();
 		AForm(std::string name, int gradeSigned, int gradeExec);
