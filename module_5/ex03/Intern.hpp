@@ -5,16 +5,9 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
-#include <string>
-#include <iostream>
-#include <map>
 
 class Intern
 {
-    private:
-        typedef AForm* (Intern::*FormCreationFunction)(std::string const &);
-        std::map<std::string, FormCreationFunction> _formTypes;
-        
     public:
         Intern();
         Intern(const Intern &other);

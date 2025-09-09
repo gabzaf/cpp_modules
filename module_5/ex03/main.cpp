@@ -11,7 +11,7 @@ int main()
 
     	std::cout << std::endl << "--- Testing Valid Form Creation ---" << std::endl;
 
-    	form = joao.makeForm("shrubbery creation", "home");
+    	form = joao.makeForm("ShrubberyCreationForm", "home");
     	if (form)
     	{
     	    std::cout << "Successfully created form: " << form->getName() << std::endl;
@@ -20,7 +20,7 @@ int main()
 
     	std::cout << "--------------------" << std::endl;
 
-    	form = joao.makeForm("robotomy request", "Bender");
+    	form = joao.makeForm("RobotomyRequestForm", "Bender");
     	if (form)
     	{
     	    std::cout << "Successfully created form: " << form->getName() << std::endl;
@@ -29,7 +29,7 @@ int main()
 
     	std::cout << "--------------------" << std::endl;
 
-    	form = joao.makeForm("presidential pardon", "Zaphod");
+    	form = joao.makeForm("PresidentialPardonForm", "Zaphod");
     	if (form)
     	{
     	    std::cout << "Successfully created form: " << form->getName() << std::endl;

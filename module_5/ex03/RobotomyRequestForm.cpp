@@ -33,6 +33,11 @@ RobotomyRequestForm::~RobotomyRequestForm()
     //std::cout << "RobotomyRequestForm destructor called" << std::endl;
 }
 
+std::string RobotomyRequestForm::getTarget() const
+{
+    return (this->_target);
+}
+
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
     if (!this->getIsSigned())
