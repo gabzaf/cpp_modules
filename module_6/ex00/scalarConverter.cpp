@@ -15,6 +15,34 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 
 ScalarConverter::~ScalarConverter(){}
 
+void printPseudo(const std::string &input)
+{
+    std::cout << "char: impossible" << std::endl;
+    std::cout << "int: impossible" << std::endl;
+
+    if (input[input.size() - 1] == 'f')
+    {
+        std::cout << "float: " << input << std::endl;
+        std::cout << "double: " << input.substr(0, input.size() - 1) << std::endl;
+    }
+    else
+    {
+        std::cout << "float: " << input << "f" << std::endl;
+        std::cout << "double: " << input << std::endl;
+    }
+}
+
+bool isPseudo(const std::string &input)
+{
+    if (input == "nan" || input == "nanf" ||
+            input == "+inf" || input == "+inff" ||
+            input == "-inf" || input == "-inff" ||
+            input == "inf"  || input == "inff")
+    {return true;}
+    else
+        return false;
+}
+
 void    charConversion(const std::string &input, int minus)
 {
     char            c;
@@ -27,28 +55,24 @@ void    charConversion(const std::string &input, int minus)
     {
         std::cout << "Char: Non displayable" << std::endl;
         i = std::atoi(input.c_str());
-        f = static_cast<float>(i);
-        d = static_cast<double>(i);
     }
     else
     {
-        std::cout << c << std::endl;
+        if (isprint(c))
+            std::cout << "char: '" << c << "'" << std::endl;
+        else
+            std::cout << "char: Non displayable" << std::endl;
         i = static_cast<int>(c);
-        f = static_cast<float>(i);
-        d = static_cast<double>(i);
     }
-    if (minus == 1)
+    f = static_cast<float>(i);
+    d = static_cast<double>(i);
+    if (minus)
     {
-        std::cout << "Int: -" << i << std::endl;
-        std::cout << "Float: -" << f << ".0f" << std::endl;
-        std::cout << "Double: -" << d << ".0" << std::endl; 
+        i = -i; f = -f; d = -d;
     }
-    else
-    {
         std::cout << "Int: " << i << std::endl;
         std::cout << "Float: " << f << ".0f" << std::endl;
         std::cout << "Double: " << d << ".0" << std::endl; 
-    }
 }
 
 bool    is_int(const std::string &input)
@@ -70,31 +94,41 @@ void     float_double_conversion(const std::string &input, int minus)
     const char  *str = input.c_str();
     int         i = std::atoi(str);
     double      d = std::atof(str);
-    float       f = static_cast<float>(d);
-    char        c = static_cast<float>(i);
-    char        last = (int)input.length() - 1;
-
-    
-    if (minus == 1)
+    if (minus)
     {
-        std::cout << "Char: Non displayable" << std::endl;
-        std::cout << "Int: -" << i << std::endl;
-        if (input[last] == '0')
-            std::cout << "Float: -" << f << ".0f"<<std::endl;
-        else
-            std::cout << "Float: -" << f << "f"<<std::endl;
-        std::cout << "Double: -" << d << std::endl; 
+        i = -i;
+        d = -d;
     }
+    if (d < DOUBLE_MIN || d > DOUBLE_MAX)
+    {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: impossible" << std::endl;
+        std::cout << "double: impossible" << std::endl;
+        return;
+    }
+    float f = static_cast<float>(d);
+    char c = static_cast<char>(i);
+    if (d < 0 || d > 127)
+        std::cout << "char: impossible" << std::endl;
+    else if (isprint(c))
+        std::cout << "char: '" << c << "'" << std::endl;
     else
-    {
-        std::cout << "Char: " << c << std::endl;
-        std::cout << "Int: " << i << std::endl;
-        if (input[last] == '0')
-            std::cout << "Float: " << f << ".0f"<<std::endl;
-        else
-            std::cout << "Float: " << f << "f"<<std::endl;
-        std::cout << "Double: " << d << std::endl;
-    }
+        std::cout << "char: Non displayable" << std::endl;
+    if (d < INT_MIN || d > INT_MAX)
+        std::cout << "int: impossible" << std::endl;
+    else
+        std::cout << "int: " << i << std::endl;
+    if (d < FLOAT_MIN || d > FLOAT_MAX)
+        std::cout << "float: impossible" << std::endl;
+    else if (d == i)
+        std::cout << "float: " << f << ".0f" << std::endl;
+    else
+        std::cout << "float: " << f << "f" << std::endl;
+    if (d == i)
+        std::cout << "double: " << d << ".0" << std::endl;
+    else
+        std::cout << "double: " << d << std::endl;
 }
 
 void    is_float_or_double(const std::string &input, int minus)
@@ -135,6 +169,8 @@ int     sign_parser(std::string &input)
         }
         input.erase(0, first_non_sign_pos);
     }
+    if (!std::isdigit(input[0]) && input.find('.') == std::string::npos)
+        throw ScalarConverter::NotAcceptedFormatException();
     return (minus);
 }
 
@@ -144,16 +180,24 @@ void    ScalarConverter::convert(const std::string &input)
     std::string     processed_input;
 
     processed_input = input;
+    minus = 0;
     try
     {
-        if (input.find('+') || input.find('-'))
+        if (isPseudo(processed_input))
+        {
+            printPseudo(processed_input);
+            return;
+        }
+        if (input.find('+') != std::string::npos || input.find('-') != std::string::npos)
             minus = sign_parser(processed_input);
         if (processed_input.length() == 1)
             charConversion(processed_input, minus);
         else if (input.find('.')!= std::string::npos)
             is_float_or_double(processed_input, minus);
-        else if (is_int(input))
-            std::cout << "Melhorar print";
+        else if (is_int(processed_input))
+        {
+            float_double_conversion(processed_input, minus);
+        }
         else
             throw NotAcceptedFormatException();
     }
