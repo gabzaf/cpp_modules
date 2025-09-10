@@ -2,18 +2,18 @@
 
 Serializer::Serializer(){}
 
-Serializer::~Serializer(){}
-
-Serializer::Serializer(const Serializer &original)
+Serializer::Serializer(const Serializer &other)
 {
-    (void)original;
+    (void)other;
 }
 
-Serializer& Serializer::operator=(const Serializer &original)
+Serializer& Serializer::operator=(const Serializer &other)
 {
-    (void)original;
+    (void)other;
     return (*this);
 }
+
+Serializer::~Serializer(){}
 
 uintptr_t Serializer::serialize(Data* ptr)
 {
