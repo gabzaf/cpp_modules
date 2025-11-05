@@ -17,10 +17,10 @@ Span::~Span(){}
 
 void Span::addNumber(int nbr)
 {
-    if (this->_nbrs.size() > this->_N)
-        throw (std::out_of_range("Error: Full Container"));
-    else
+    if (this->_nbrs.size() < this->_N)
         _nbrs.push_back(nbr);
+    else
+        throw (std::out_of_range("Error: Full Container"));
 }
 
 int Span::shortestSpan()
