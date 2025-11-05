@@ -2,11 +2,14 @@
 #define SPAN_HPP
 
 #include <iostream>
+#include <list>
+#include <exception>
 
 class Span
 {
     private:
         unsigned int _N;
+        std::list<int> _nbrs;
     public:
         Span();
         Span(unsigned int N);
@@ -17,4 +20,6 @@ class Span
         void    addNumber(int nbr);
         int     shortestSpan();
         int     longestSpan();
-}
+};
+
+#endif
