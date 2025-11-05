@@ -23,6 +23,15 @@ void Span::addNumber(int nbr)
         throw (std::out_of_range("Error: Full Container"));
 }
 
+void Span::addManyNumbers(int begin, int end)
+{
+    while(begin <= end)
+    {
+        addNumber(begin);
+        begin++;
+    }
+}
+
 int Span::shortestSpan()
 {
     if (this->_nbrs.size() < 2)
