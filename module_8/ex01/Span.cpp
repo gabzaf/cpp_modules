@@ -29,11 +29,32 @@ int Span::shortestSpan()
         throw (std::out_of_range("Error: Not enough numbers"));
     std::list<int> sortedNbrs = this->_nbrs;
     sortedNbrs.sort();
+    std::list<int>::iterator it1 = sortedNbrs.begin();
+    std::list<int>::iterator it2 = ++sortedNbrs.begin();
+    int i = *it2 - *it1;
+    while (it2 != sortedNbrs.end())
+    {
+        if (i > *it2 - *it1)
+            i = *it2 - *it1;
+        it1++;
+        it2++;
+    }
+    return (i);
+}
 
-    for (std::list<int>::iterator it = sortedNbrs.begin(); it != sortedNbrs.end(); ++it)
-        std::cout << *it << " ";
-
+void Span::printNbrs()
+{
+    std::list<int>::iterator it = this->_nbrs.begin();
+    if (it == this->_nbrs.end())
+        std::cout << "Empty array" << std::endl;
+    std::list<int>::iterator last = this->_nbrs.end();
+    std::cout << "Array" << std::endl;
+    while (it != this->_nbrs.end())
+    {
+        std::cout << *it;
+        it++;
+        if (it != last)
+            std::cout << ", ";
+    }
     std::cout << std::endl;
-
-    return (0);
 }
