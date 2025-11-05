@@ -42,6 +42,15 @@ int Span::shortestSpan()
     return (i);
 }
 
+int Span::longestSpan()
+{
+    if (this->_nbrs.size() < 2)
+        throw (std::out_of_range("Error: Not enough numbers"));
+    int minNbr = *std::min_element(_nbrs.begin(), _nbrs.end());
+    int maxNbr = *std::max_element(_nbrs.begin(), _nbrs.end());
+    return (abs(maxNbr - minNbr));
+}
+
 void Span::printNbrs()
 {
     std::list<int>::iterator it = this->_nbrs.begin();

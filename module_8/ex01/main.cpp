@@ -19,6 +19,9 @@ int main()
         test1.printNbrs();
         printString("Shortest Span");
         std::cout << test1.shortestSpan() << std::endl;
+        printString("Longest Span");
+        std::cout << test1.longestSpan() << std::endl;
+
     }
     catch (std::exception &e)
     {
