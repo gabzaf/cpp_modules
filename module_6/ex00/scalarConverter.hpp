@@ -17,13 +17,13 @@
 
 class ScalarConverter
 {
-    public:
-            ScalarConverter();
-            ScalarConverter(const ScalarConverter &other);
-            ScalarConverter &operator=(const ScalarConverter &other);
-            ~ScalarConverter();
-
-            void convert(const std::string &input);
+	private:
+		ScalarConverter();
+		ScalarConverter(const ScalarConverter &other);
+		ScalarConverter &operator=(const ScalarConverter &other);
+		~ScalarConverter();
+	public:
+		static void convert(const std::string &input);
 
     class NotAcceptedFormatException : public std::exception
     {

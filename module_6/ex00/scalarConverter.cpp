@@ -53,12 +53,12 @@ void    charConversion(const std::string &input, int minus)
     c = input[0];   
     if (std::isdigit(c))
     {
-        std::cout << "Char: Non displayable" << std::endl;
+        std::cout << "char: Non displayable" << std::endl;
         i = std::atoi(input.c_str());
     }
     else
     {
-        if (isprint(c))
+        if (std::isprint(c))
             std::cout << "char: '" << c << "'" << std::endl;
         else
             std::cout << "char: Non displayable" << std::endl;
@@ -70,9 +70,9 @@ void    charConversion(const std::string &input, int minus)
     {
         i = -i; f = -f; d = -d;
     }
-        std::cout << "Int: " << i << std::endl;
-        std::cout << "Float: " << f << ".0f" << std::endl;
-        std::cout << "Double: " << d << ".0" << std::endl; 
+        std::cout << "int: " << i << std::endl;
+        std::cout << "float: " << f << ".0f" << std::endl;
+        std::cout << "double: " << d << ".0" << std::endl; 
 }
 
 bool    is_int(const std::string &input)
