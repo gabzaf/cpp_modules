@@ -136,7 +136,7 @@ void    is_float_or_double(const std::string &input, int minus)
     int             len;
     std::string     temp;
 
-    len = (int)input.length() - 1;
+    len = static_cast<int>(input.length() - 1;
     temp = input;
 
     if (input.find_first_of('.') == input.find_last_of('.'))
