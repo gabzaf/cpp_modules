@@ -1,4 +1,4 @@
-SRCS = main.cpp Serializer.cpp
+SRCS = main.cpp serializer.cpp
 OBJS = $(SRCS:.cpp=.o)
 NAME = ex02
 CC = c++
