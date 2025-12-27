@@ -1,20 +1,13 @@
 #include "RobotomyRequestForm.hpp"
 
 
-RobotomyRequestForm::RobotomyRequestForm(): AForm("", 72, 45), _target("default")
-{ 
-    //std::cout << "RobotomyRequestForm default constructor called" << std::endl;
-}
+RobotomyRequestForm::RobotomyRequestForm(): AForm("", 72, 45), _target("default"){}
 
-RobotomyRequestForm::RobotomyRequestForm (std::string target) : AForm("", 72, 45), _target(target)
-{ 
-    //std::cout << "RobotomyRequestForm parametrized constructor called" << std::endl;
-}
+RobotomyRequestForm::RobotomyRequestForm (std::string target) : AForm("", 72, 45), _target(target){}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other) : AForm(other), _target(other._target)
 {
 	*this = other;
-	//std::cout << "RobotomyRequestForm copy constructor called" << std::endl;
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &other)
@@ -22,16 +15,13 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &o
     if (this != &other)
 	{
 		AForm::operator=(other);
-		*this = other;
+		_target = other._target;
 	}
 	return (*this);
 	//std::cout << "RobotomyRequestForm  operator overload called" << std::endl;
 }
 
-RobotomyRequestForm::~RobotomyRequestForm()
-{
-    //std::cout << "RobotomyRequestForm destructor called" << std::endl;
-}
+RobotomyRequestForm::~RobotomyRequestForm(){}
 
 std::string RobotomyRequestForm::getTarget() const
 {

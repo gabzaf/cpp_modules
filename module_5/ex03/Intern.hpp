@@ -18,7 +18,7 @@ class Intern
 
         AForm *createPresidentialPardonForm(std::string const &target);
         AForm *createRobotomyRequestForm(std::string const &target);
-	    AForm *createShrubberyCreationForm(std::string const &target);
+	AForm *createShrubberyCreationForm(std::string const &target);
 
         class FormNotFoundException : public std::exception
         {

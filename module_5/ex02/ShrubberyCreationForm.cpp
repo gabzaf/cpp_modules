@@ -1,19 +1,12 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("", 145, 137), _target("default")
-{ 
-	//std::cout << "ShrubberyCreationForm default constructor called" << std::endl;
-}
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("", 145, 137), _target("default"){}
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("", 145, 137), _target(target)
-{ 
-	//std::cout << "ShrubberyCreationForm parametrized constructor called" << std::endl;
-}
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target){}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : AForm(other), _target(other._target)
 {
 	*this = other;
-	//std::cout << "ShrubberyCreationForm copy constructor called" << std::endl;
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
@@ -21,16 +14,12 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	if (this != &other)
 	{
 		AForm::operator=(other);
-		*this = other;
+		this->_target = other._target;
 	}
 	return (*this);
-	//std::cout << "ShrubberyCreationForm operator overload called" << std::endl;
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm()
-{
-	//std::cout << "ShrubberyCreationForm destructor called" << std::endl;
-}
+ShrubberyCreationForm::~ShrubberyCreationForm(){}
 
 std::string ShrubberyCreationForm::getTarget() const
 {

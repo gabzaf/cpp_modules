@@ -23,17 +23,12 @@ AForm::AForm(const AForm &other) : _name(other._name), _isSigned(false), _gradeS
 
 AForm		&AForm::operator=(const AForm &other)
 {
-	//std::cout << "Form assignment operator overload called" << std::endl;
 	if (this != &other)
-		return (*this);
-	_isSigned = other._isSigned;
+		this->_isSigned = other._isSigned;
 	return (*this);
 }
 
-AForm::~AForm()
-{ 
-	//std::cout << "Form destructor called" << std::endl;
-	}
+AForm::~AForm(){}
 
 std::string		AForm::getName() const { return (_name); }
 

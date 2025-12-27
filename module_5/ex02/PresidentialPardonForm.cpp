@@ -1,19 +1,12 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(): AForm("", 25, 5), _target("default")
-{ 
-    //std::cout << "PresidentialPardonForm default constructor called" << std::endl;
-}
+PresidentialPardonForm::PresidentialPardonForm(): AForm("", 25, 5), _target("default"){}
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("", 25, 5), _target(target)
-{ 
-    //std::cout << "PresidentialPardonForm parametrized constructor called" << std::endl;
-}
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("", 25, 5), _target(target){}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other) : AForm(other), _target(other._target)
 {
 	*this = other;
-	//std::cout << "PresidentialPardonForm copy constructor called" << std::endl;
 }
 
  PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &other)
@@ -21,20 +14,16 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &oth
     if (this != &other)
 	{
 		AForm::operator=(other);
-		*this = other;
+		_target = other._target;
 	}
 	return (*this);
-	//std::cout << "PresidentialPardonForm  operator overload called" << std::endl;
 }
 
-PresidentialPardonForm::~PresidentialPardonForm()
-{
-    //std::cout << "PresidentialPardonForm destructor called" << std::endl;
-}
+PresidentialPardonForm::~PresidentialPardonForm(){}
 
 std::string PresidentialPardonForm::getTarget() const
 {
-    return (this->_target);
+	return (this->_target);
 }
 
 void PresidentialPardonForm::execute(Bureaucrat const &executor) const
