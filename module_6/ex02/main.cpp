@@ -54,7 +54,7 @@ void    identify(Base &type)
 				std::cout << "Reference type: C" << std::endl;
 			}
 			catch(const std::exception& e){
-				std::cout << "Reference type: Unknow" << std::endl;
+				std::cout << "Reference type: Unknown" << std::endl;
 			}
 		}
 	}
