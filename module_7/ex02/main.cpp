@@ -1,9 +1,6 @@
 #include "Array.hpp"
 #include <iostream>
 
-#include "Array.hpp"
-#include <iostream>
-
 template <typename T>
 void printArrayInfo(Array<T> &array)
 {
@@ -20,16 +17,29 @@ void printArrayInfo(Array<T> &array)
 
 int main(void)
 {
-    std::cout << "*****  ARRAY OF INT TEST   *****" << std::endl;
+	std::cout << "*****  ARRAY OF INT TEST   *****" << std::endl;
 
-    Array<int> num(10);
+	Array<int> num(10);
 
-    for (unsigned int i = 0; i < 10; i++)
-        num[i] = i + 10;
+	for (unsigned int i = 0; i < 10; i++)
+		num[i] = i + 10;
 
-    printArrayInfo(num);
+	printArrayInfo(num);
 
-    std::cout << std::endl;
+	std::cout << std::endl;
 
-    return 0;
+	Array<int> a(3);
+	a[0] = 10;
+
+	const Array<int> b(a);
+	std::cout << b[0] << std::endl;
+
+	Array<std::string> words(3);
+    	words[0] = "Hello";
+    	words[1] = "42";
+   	words[2] = "Porto";
+
+    	for (unsigned int i = 0; i < words.size(); i++)
+        	std::cout << words[i] << std::endl;
+	return 0;
 }
