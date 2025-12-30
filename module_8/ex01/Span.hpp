@@ -2,28 +2,31 @@
 #define SPAN_HPP
 
 #include <iostream>
-#include <list>
+#include <vector>
+#include <iterator>
 #include <exception>
 #include <algorithm>
+#include <cstdlib>
 
 class Span
 {
-    private:
-        unsigned int _N;
-        std::list<int> _nbrs;
-    public:
-        Span();
-        Span(unsigned int N);
-        Span(const Span &other);
-        Span &operator=(const Span &other);
-        ~Span();
+	private:
+		std::vector<int> _nbrs;	
+		unsigned int _N;
 
-        void    addNumber(int nbr);
-        void    addManyNumbers(int begin, int end);
-        int     shortestSpan();
-        int     longestSpan();
+	public:
+		Span();
+		Span(unsigned int N);
+		Span(const Span &other);
+		Span &operator=(const Span &other);
+		~Span();
 
-        void    printNbrs();
+		void    addNumber(int nbr);
+		void    insertManyNbrs(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+		int     shortestSpan();
+		int     longestSpan();
+
+		void    printNbrs();
 };
 
 #endif

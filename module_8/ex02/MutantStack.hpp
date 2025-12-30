@@ -3,10 +3,8 @@
 
 #include <iostream>
 #include <stack>
-#include <iterator>
 
 template <typename T>
-
 class MutantStack : public std::stack<T>
 {
     public:
@@ -16,13 +14,13 @@ class MutantStack : public std::stack<T>
         ~MutantStack();
 
         typedef typename std::stack<T>::container_type wraped_cntnr;
-        typedef typename wraped_cntr::iterator it;
+        typedef typename wraped_cntnr::iterator iterator;
         typedef typename wraped_cntnr::const_iterator const_iterator;
 
         iterator begin();
         iterator end();
-        const iterator begin();
-        const iterator end();
+        const_iterator begin() const;
+        const_iterator end() const;
 };
 
 #include "MutantStack.tpp"

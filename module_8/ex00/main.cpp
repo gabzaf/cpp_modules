@@ -8,7 +8,7 @@ int main()
     std::vector<int> v(arr, arr + sizeof(arr)/sizeof(arr[0]));
     std::list<int> l(arr, arr + sizeof(arr)/sizeof(arr[0]));
 
-    std::cout << "Vector" << std::endl << std::endl;
+    std::cout << "Vector Testing" << std::endl << std::endl;
     try
     {
         easyfind(v, -1345);
@@ -20,7 +20,7 @@ int main()
         std::cerr << e.what() << std::endl;
     }
 
-    std::cout << std::endl << "List" << std::endl << std::endl;
+    std::cout << std::endl << "List Testing" << std::endl << std::endl;
     try
     {
         easyfind(l, -1345);
