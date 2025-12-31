@@ -16,6 +16,7 @@ class	BitcoinExchange
 		void	parse_arg(int ac, char **av);
 		void	load_db();
 		void	parse_input_file(const std::string &filename);
+		bool	get_rate_for_date(const std::string &date, double &rate);
 
 	public:
 		BitcoinExchange();

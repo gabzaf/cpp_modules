@@ -39,9 +39,6 @@ void	BitcoinExchange::parse_arg(int ac, char **av)
 	std::string fileName = av[1];
 	if (fileName.empty() || fileName.find_first_not_of(" \t\n\r\f\v") == std::string::npos)
 		throw (InvalidInput());
-	std::ifstream inputFile(fileName.c_str());
-	if (!inputFile || inputFile.peek() == std::ifstream::traits_type::eof())
-		throw (FileOpenError());
 }
 
 void	BitcoinExchange::load_db()
@@ -100,12 +97,12 @@ bool	parse_date(const std::string &date)
 	return (true);
 }
 
-bool	get_rate_for_date(const std::string &date, double &rate, std::map<std::string, double> &data)
+bool	BitcoinExchange::get_rate_for_date(const std::string &date, double &rate)
 {
-	std::map<std::string, double>::iterator	it = data.lower_bound(date);
-	if (it == data.end() || it->first != date)
+	std::map<std::string, double>::iterator	it = _btcData.lower_bound(date);
+	if (it == _btcData.end() || it->first != date)
 	{
-		if (it == data.begin())
+		if (it == _btcData.begin())
 			return (false); // no lower date available
 		--it;
 	}
@@ -118,6 +115,8 @@ void	BitcoinExchange::parse_input_file(const std::string &filename)
 	std::ifstream	input(filename.c_str());
 	if (!input)
 		throw FileOpenError();
+	if (input.peek() == std::ifstream::traits_type::eof())
+		throw (FileOpenError());
 
 	std::string line;
 	std::getline(input, line);
@@ -142,7 +141,7 @@ void	BitcoinExchange::parse_input_file(const std::string &filename)
 			continue ;
 		}
 		double	rate;
-		if (!get_rate_for_date(date, rate, _btcData))
+		if (!get_rate_for_date(date, rate))
 		{
 			std::cerr << "Error: no available exchange rate for this date." << std::endl;
 			continue ;
@@ -151,7 +150,6 @@ void	BitcoinExchange::parse_input_file(const std::string &filename)
 		std::cout << std::fixed;
 		std::cout << date << " => " << value << " = " << value * rate << std::endl;
     }
-
 }
 
 const char	*BitcoinExchange::InvalidInput::what() const throw()
