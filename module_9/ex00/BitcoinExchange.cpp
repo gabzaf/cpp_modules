@@ -35,10 +35,10 @@ void	BitcoinExchange::run(int ac, char **av)
 void	BitcoinExchange::parse_arg(int ac, char **av)
 {
 	if (ac != 2)
-		throw (InvalidInput());
+		throw (FileOpenError());
 	std::string fileName = av[1];
 	if (fileName.empty() || fileName.find_first_not_of(" \t\n\r\f\v") == std::string::npos)
-		throw (InvalidInput());
+		throw (FileOpenError());
 }
 
 void	BitcoinExchange::load_db()
@@ -74,9 +74,12 @@ std::string	trim(const std::string &str)
 
 bool	parse_value(const std::string &valueStr, double &value)
 {
-	std::stringstream ss(valueStr);
-	if (!(ss >> value))
+	std::stringstream	ss(valueStr);
+	if (!(ss >> value) || !(ss.eof()))
+	{
+		std::cerr << "Error: bad input => " << valueStr << std::endl;
 		return (false);
+	}
 	if (value < 0)
 	{
 		std::cerr << "Error: not a positive number." << std::endl;
@@ -93,6 +96,16 @@ bool	parse_value(const std::string &valueStr, double &value)
 bool	parse_date(const std::string &date)
 {
 	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
+		return (false);
+	int	year = std::atoi(date.substr(0, 4).c_str());
+	int	month = std::atoi(date.substr(5, 2).c_str());
+	int	day = std::atoi(date.substr(8, 2).c_str());
+	if (year < 0 || year > 9999 || month < 1 || month > 12)
+		return (false);
+	int	max_day[] = {31,28,31,30,31,30,31,31,30,31,30,31};
+	if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+		max_day[1] = 29; // leap year
+	if (day < 1 || day > max_day[month - 1])
 		return (false);
 	return (true);
 }
