@@ -88,7 +88,7 @@ bool	parse_value(const std::string &valueStr, double &value)
 	}
 	if (value > 1000)
 	{
-		std::cerr << "Error: too large number." << std::endl;
+		std::cerr << "Error: too large a number." << std::endl;
 		return (false);
 	}
 	return (true);
@@ -148,6 +148,8 @@ void	BitcoinExchange::parse_input_file(const std::string &filename)
 			std::cerr << "Error: no available exchange rate for this date." << std::endl;
 			continue ;
 		}
+		std::cout.precision(2);
+		std::cout << std::fixed;
 		std::cout << date << " => " << value << " = " << value * rate << std::endl;
     }
 
