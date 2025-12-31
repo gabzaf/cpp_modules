@@ -1,6 +1,5 @@
 #include "BitcoinExchange.hpp"
 
-
 BitcoinExchange::BitcoinExchange(){}
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
@@ -154,7 +153,6 @@ void	BitcoinExchange::parse_input_file(const std::string &filename)
     }
 
 }
-
 
 const char	*BitcoinExchange::InvalidInput::what() const throw()
 {
