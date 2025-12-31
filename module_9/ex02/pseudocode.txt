@@ -1,0 +1,41 @@
+main:
+    if no arguments provided:
+        print "Error" to stderr
+        exit
+
+    parse command line arguments into a list of positive integers
+    if any argument is invalid (non-integer or <= 0):
+        print "Error" to stderr
+        exit
+
+    display "Before: " + unsorted sequence
+
+    // Choose two containers
+    container1 = std::vector<int>(sequence)
+    container2 = std::deque<int>(sequence)
+
+    // Measure and sort with container1
+    start_timer1
+    merge_insert_sort(container1)
+    end_timer1
+    time1 = elapsed_time
+
+    // Measure and sort with container2
+    start_timer2
+    merge_insert_sort(container2)
+    end_timer2
+    time2 = elapsed_time
+
+    display "After: " + sorted sequence (from container1)
+    display "Time to process a range of N elements with std::vector : " + time1
+    display "Time to process a range of N elements with std::deque  : " + time2
+
+merge_insert_sort(container):
+    if container.size <= 1:
+        return
+
+    // Ford-Johnson algorithm outline:
+    split container into pairs
+    sort each pair (first < second)
+    create "main chain" of larger elements
+    insert smaller elements into main chain using binary insertion

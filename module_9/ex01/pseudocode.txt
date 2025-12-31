@@ -1,0 +1,29 @@
+function main(args):
+    if number of args != 2:
+        print "Error" to stderr
+        exit with failure
+
+    expression = args[1]
+    tokens = split expression by spaces
+    create an empty stack
+
+    for each token in tokens:
+        if token is a number:
+            convert token to int and push onto stack
+        else if token is one of "+", "-", "*", "/":
+            if stack has fewer than 2 numbers:
+                print "Error" to stderr
+                exit with failure
+            b = pop from stack
+            a = pop from stack
+            result = apply operator (token) to a and b
+            push result onto stack
+        else:
+            print "Error" to stderr
+            exit with failure
+
+    if stack size != 1:
+        print "Error" to stderr
+        exit with failure
+
+    print top of stack to stdout
