@@ -59,11 +59,6 @@ int	main (int ac, char** av)
 		sortMe.sortDeque();
 		std::clock_t endDeq = std::clock();
 		
-		std::cout << "Before: ";
-		printInput(ac, av);
-		std::cout << "After: ";
-		sortMe.print(sortMe.getDeque());
-
 		double	timeVecSec = static_cast<double>(endVec - startVec) / CLOCKS_PER_SEC;
 		double	timeDeqSec = static_cast<double>(endDeq - startDeq) / CLOCKS_PER_SEC;
 		std::cout << "Time to process a range of " << ac - 1
