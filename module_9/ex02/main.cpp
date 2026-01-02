@@ -47,17 +47,17 @@ int	main (int ac, char** av)
 		std::clock_t	startVec = std::clock();
 		sortMe.parseInputVec(ac, av);
 		sortMe.sortVector();
-		std::clock_t endVec = std::clock();
+		std::clock_t	endVec = std::clock();
 
 		std::cout << "Before: ";
 		printInput(ac, av);
 		std::cout << "After: ";
 		sortMe.print(sortMe.getVector());
 
-		std::clock_t startDeq = std::clock();
+		std::clock_t	startDeq = std::clock();
 		sortMe.parseInputDeq(ac, av);
 		sortMe.sortDeque();
-		std::clock_t endDeq = std::clock();
+		std::clock_t	endDeq = std::clock();
 		
 		double	timeVecSec = static_cast<double>(endVec - startVec) / CLOCKS_PER_SEC;
 		double	timeDeqSec = static_cast<double>(endDeq - startDeq) / CLOCKS_PER_SEC;
