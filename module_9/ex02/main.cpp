@@ -10,32 +10,6 @@ void	printInput(int ac, char** av)
 	std::cout << std::endl;
 }
 
-template <typename T>
-void	checkIfSorted(const T &container)
-{
-	typename T::const_iterator	it;
-	for (it = container.begin(); it != container.end() - 1; it++)
-	{
-		if (*it > *(it + 1))
-		{
-			std::cerr << "--->Error: Not sorted numbers." << std::endl;
-			return ;
-		}
-	}
-	std::cout << "Sorted numbers" << std::endl;
-}
-
-template <typename T>
-void	checkIfCorrectCount(const T &container, int count)
-{
-	if (container.size() != static_cast<size_t>(count))
-	{
-		std::cerr << "--->Error: Incorrect number of elements." << std::endl;
-		return ;
-	}
-	std::cout << "--->Correct number of elements." << std::endl;
-}
-
 int	main (int ac, char** av)
 {
 	if (ac < 2)
@@ -57,8 +31,10 @@ int	main (int ac, char** av)
 		std::clock_t	startDeq = std::clock();
 		sortMe.parseInputDeq(ac, av);
 		sortMe.sortDeque();
+
 		std::clock_t	endDeq = std::clock();
-		
+		std::clock_t endDeq = std::clock();
+
 		double	timeVecSec = static_cast<double>(endVec - startVec) / CLOCKS_PER_SEC;
 		double	timeDeqSec = static_cast<double>(endDeq - startDeq) / CLOCKS_PER_SEC;
 		std::cout << "Time to process a range of " << ac - 1
